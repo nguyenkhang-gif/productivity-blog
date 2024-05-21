@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node distbackend/server.js",
+    "start": "node dist/backend/server.js",
     "server": "nodemon backend/server.js",
     "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
   },
