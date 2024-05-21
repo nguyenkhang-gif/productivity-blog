@@ -3,7 +3,7 @@ import Chapter from "./Chapter.tsx";
 
 const Chapters = () => {
   const { chapters } = useStoreChaters();
-  console.log(chapters);
+  // console.log(chapters);
 
   return (
     // <div className="flex flex-col justify-center items-center gap-2 p-10 min-w-[50vw] overflow-y-scroll">

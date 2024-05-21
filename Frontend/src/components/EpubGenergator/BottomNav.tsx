@@ -7,14 +7,6 @@ import toast from "react-hot-toast";
 const BottomNav = () => {
   return (
     <div className="mt-auto">
-      {/* <button
-        className="btn btn-outline btn-info"
-        onClick={() => {
-          // genEpub();
-        }}
-      >
-        Genergate Epub
-      </button> */}
       <ConfirmOrderModel />
     </div>
   );
