@@ -1,4 +1,3 @@
-import React from "react";
 import useStoreChaters from "../../zustand/useStoreChapters";
 import Chapter from "./Chapter.tsx";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const TopNav = () => {
@@ -73,9 +72,7 @@ const TopNav = () => {
 
 export default TopNav;
 
-
-
-// start er code 
+// start er code
 // import React from "react";
 // import { Link } from "react-router-dom";
 
