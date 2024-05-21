@@ -1,4 +1,4 @@
-import useStoreChaters from "../../zustand/useStoreChapters";
+import useStoreChaters from "../../zustand/useStoreChapters.tsx";
 import Chapter from "./Chapter.tsx";
 
 const Chapters = () => {

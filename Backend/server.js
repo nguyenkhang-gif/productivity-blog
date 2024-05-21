@@ -7,7 +7,7 @@ const app = express();
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 4000;
 
 const __dirname = path.resolve();
 
@@ -26,4 +26,5 @@ app.get("*", (req, res) => {
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT);
+  console.log(__dirname);
 });

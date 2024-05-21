@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useCheerio from "../../Hooks/useCheerio";
-import useGetHtml from "../../Hooks/useGetHtml";
+import useCheerio from "../../Hooks/useCheerio.tsx";
+import useGetHtml from "../../Hooks/useGetHtml.tsx";
 import useStoreChaters from "../../zustand/useStoreChapters.tsx";
 import toast from "react-hot-toast";
 
