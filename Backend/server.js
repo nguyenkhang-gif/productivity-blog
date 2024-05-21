@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import epubRoute from "./routes/epub.routes.js";
-import bodyParser from "body-parser";
+
 import path from "path";
 const app = express();
 
