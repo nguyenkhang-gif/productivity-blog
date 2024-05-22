@@ -1,13 +1,17 @@
+import { UniqueIdentifier } from "@dnd-kit/core";
 import cheerio from "cheerio";
 import { useState } from "react";
+import useStoreChaters from "../zustand/useStoreChapters";
 
 export interface ChapterData {
+  id: UniqueIdentifier;
   title: string;
   data: string | null;
 }
 
 const useCheerio = () => {
   const [loading, setLoading] = useState(false);
+  const { chapters } = useStoreChaters();
   const [error, setError] = useState<string | null>(null);
 
   const toChapter = (html: string): ChapterData => {
@@ -23,18 +27,19 @@ const useCheerio = () => {
       const contentText = chapterContent.find("#chapter-content").html();
 
       setLoading(false);
-      console.log(contentText?.trim());
-      console.log(titleText);
 
       return {
+        id: chapters.length + 1,
         title: titleText.trim(),
         data: contentText?.trim() || null,
       };
     } catch (err) {
-      setLoading(false);
+      setLoading(true);
       setError("Failed to parse HTML");
       console.error(err);
-      return { title: "not found", data: "string | null;" };
+      return { id: 0, title: "not found", data: "string | null;" };
+    } finally {
+      setLoading(true);
     }
   };
 
