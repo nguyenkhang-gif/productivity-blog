@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
+import useLogout from "../../Hooks/Blogs/useLogout";
 
 const TopNav = () => {
+  const { authUser } = useAuthContext();
+  const { logout } = useLogout();
+  // console.log(authUser);
+
+  const handleLogout = async (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    await logout();
+  };
+
   return (
     <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-50">
       <div className="flex-1">
@@ -24,6 +37,9 @@ const TopNav = () => {
               <li>
                 <Link to={"/epubgen"}>Epub Gen</Link>
               </li>
+              <li>
+                <Link to={"/BlogApp"}>Blogs</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -34,6 +50,7 @@ const TopNav = () => {
             className="input input-bordered w-24 md:w-auto"
           />
         </div>
+
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -43,7 +60,10 @@ const TopNav = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                src={
+                  authUser?.profilePic ||
+                  "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
               />
             </div>
           </div>
@@ -51,17 +71,21 @@ const TopNav = () => {
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
+            {authUser && (
+              <li>
+                <Link to={"/myprofile"} className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </Link>
+              </li>
+            )}
+
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
+              {authUser ? (
+                <a onClick={handleLogout}>Logout</a>
+              ) : (
+                <Link to={"/login"}>Login</Link>
+              )}
             </li>
           </ul>
         </div>

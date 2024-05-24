@@ -15,7 +15,7 @@ const BottomNav = () => {
 const ConfirmOrderModel: React.FC = () => {
   const { lightnovelInfo, setLightnovelInfo, chapters } = useStoreChaters();
 
-  const { genEpub } = useEpubGen();
+  const { genEpub, loading } = useEpubGen();
   const openModal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     if (chapters.length > 0) {
@@ -28,7 +28,6 @@ const ConfirmOrderModel: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(lightnovelInfo);
     await genEpub();
   };
 
@@ -38,6 +37,7 @@ const ConfirmOrderModel: React.FC = () => {
       <button className="btn btn-outline btn-info" onClick={openModal}>
         Create
       </button>
+
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
@@ -74,8 +74,11 @@ const ConfirmOrderModel: React.FC = () => {
                 });
               }}
             />
-
-            <button className="btn btn-active">Create</button>
+            {loading ? (
+              <span className="loading loading-spinner"></span>
+            ) : (
+              <button className="btn btn-active">Create</button>
+            )}
           </form>
         </div>
       </dialog>
