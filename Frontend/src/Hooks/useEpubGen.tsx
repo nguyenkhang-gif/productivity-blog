@@ -45,6 +45,47 @@ const useEpubGen = () => {
 
 export default useEpubGen;
 
+
+// code with bucket
+// const useEpubGen = () => {
+//   const [loading, setLoading] = useState(false);
+//   const { chapters, lightnovelInfo } = useStoreChaters();
+
+//   const genEpub = async () => {
+//     try {
+//       setLoading(true);
+
+//       const response = await fetch("/api/epub/gen-epub", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ chapters, lightnovelInfo }),
+//       });
+
+//       if (!response.ok) {
+//         throw new Error("Failed to generate EPUB");
+//       }
+
+//       const data = await response.json();
+//       const downloadUrl = data.downloadUrl;
+
+//       if (!downloadUrl) {
+//         throw new Error("No download URL returned");
+//       }
+
+//       // Open the download link in a new tab
+//       window.open(downloadUrl, "_blank");
+//     } catch (err) {
+//       console.error(err);
+//       toast.error("Error generating EPUB");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return { chapters, genEpub, loading };
+// };
 // old code
 // const useEpubGen = () => {
 //   const [loading, setLoading] = useState(false);
