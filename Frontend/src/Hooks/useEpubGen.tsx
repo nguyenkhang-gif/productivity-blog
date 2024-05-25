@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useStoreChaters from "../zustand/useStoreChapters";
 import toast from "react-hot-toast";
 
 const useEpubGen = () => {
   const [loading, setLoading] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState(null); // State to hold the download URL
   const { chapters, lightnovelInfo } = useStoreChaters();
 
   const genEpub = async () => {
@@ -24,14 +25,13 @@ const useEpubGen = () => {
       }
 
       const data = await response.json();
-      const downloadUrl = data.downloadUrl;
+      const receivedDownloadUrl = data.downloadUrl;
 
-      if (!downloadUrl) {
+      if (!receivedDownloadUrl) {
         throw new Error("No download URL returned");
       }
 
-      // Open the download link in a new tab
-      window.open(downloadUrl, "_blank");
+      setDownloadUrl(receivedDownloadUrl); // Set the download URL
     } catch (err) {
       console.error(err);
       toast.error("Error generating EPUB");
@@ -40,11 +40,18 @@ const useEpubGen = () => {
     }
   };
 
+  // Perform actions when downloadUrl changes
+  useEffect(() => {
+    if (downloadUrl) {
+      // Open the download link in a new tab
+      window.open(downloadUrl, "_blank");
+    }
+  }, [downloadUrl]);
+
   return { chapters, genEpub, loading };
 };
 
 export default useEpubGen;
-
 
 // code with bucket
 // const useEpubGen = () => {
