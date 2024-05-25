@@ -40,6 +40,9 @@ const TopNav = () => {
               <li>
                 <Link to={"/BlogApp"}>Blogs</Link>
               </li>
+              <li>
+                <Link to={"/Pomodoro"}>Pomodoro</Link>
+              </li>
             </ul>
           </div>
         </div>

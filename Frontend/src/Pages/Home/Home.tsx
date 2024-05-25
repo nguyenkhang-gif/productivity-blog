@@ -4,7 +4,7 @@ import { useAuthContext } from "../../context/authContext";
 const Home = () => {
   const { authUser } = useAuthContext();
   return (
-    <div className="hero min-h-[40%] w-[45%] bg-base-200 rounded">
+    <div className="hero m-10 bg-base-200 rounded">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Hello there</h1>

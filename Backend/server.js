@@ -4,6 +4,8 @@ import epubRoute from "./routes/epub.routes.js";
 import userRoute from "./routes/user.routes.js";
 import firebaseRoute from "./routes/firebase.routes.js";
 import authRoute from "./routes/auth.routes.js";
+import pomodoroRoute from "./routes/pomodoro.routes.js";
+
 import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import path from "path";
@@ -27,6 +29,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/messages", epubRoute);
 app.use("/api/firebase", firebaseRoute);
+app.use("/api/pomodoro", pomodoroRoute);
 app.use(express.static(path.join(__dirname, "/Frontend/dist")));
 
 app.get("*", (req, res) => {

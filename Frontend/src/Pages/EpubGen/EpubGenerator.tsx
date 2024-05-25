@@ -14,7 +14,7 @@ const EpubGenerator = () => {
     };
   }, [setChapters, setLightnovelInfo]);
   return (
-    <div className="flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-clip-padding bg-black-400 backdrop-filter backdrop-blur-lg bg-opacity-0 flex-col items-center">
+    <div className="relative flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-clip-padding bg-black-400 backdrop-filter backdrop-blur-lg bg-opacity-0 flex-col items-center">
       {/* title */}
       <h1 className="text-5xl font-bold text-black">Docln Converter</h1>
       <UrlInputForm />

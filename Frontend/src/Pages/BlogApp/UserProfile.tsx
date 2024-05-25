@@ -10,7 +10,7 @@ const UserProfile = () => {
   const { authUser } = useAuthContext();
 
   return (
-    <div className=" flex flex-col items-center artboard artboard-horizontal phone-3 bg-base-100 rounded p-5 ">
+    <div className=" flex flex-col items-center phone-3 bg-base-100 rounded p-5 mx-3 ">
       <div className="avatar  cursor-pointer transition-transform duration-300 hover:scale-105  dropdown dropdown-center">
         <div
           className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 m-1"
